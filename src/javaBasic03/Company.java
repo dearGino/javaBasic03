@@ -1,6 +1,8 @@
 package javaBasic03;
 
 import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +12,7 @@ public class Company {
 	private String address;
 	private String phoneNumber;
 	private String inn;
-	private Date founded;
+	private MyDate founded;
 	private List<Security> securities = new ArrayList<Security>();
 	
 	public void printAll() {
@@ -29,7 +31,7 @@ public class Company {
 	}
 
 	public void printFoundationDate() {
-		System.out.print(name + "   -   дата основания ");
+		System.out.print(name +"   -     дата основания ");
 		founded.printing();
 	}
 	
@@ -40,9 +42,10 @@ public class Company {
 	}
 	
 	public void printExpiredSecurities() {
+		LocalDate inputDate = LocalDate.now(); 
 		List <Security> expired = securities.stream()
-				.filter(d -> d.compareTo())
-		for (Security s : securities)
+				.filter(x -> ((ChronoLocalDate) x.getDate()).isBefore(inputDate)).toList();
+		for (Security s : expired)
 		{
 			System.out.println (s.getName()+":");
 		    System.out.println("Код: "+s.getCode());
@@ -50,8 +53,12 @@ public class Company {
 		}
 	}
 	
-	public void printFoundedAfterDate(String input) throws ParseException {
-		Date newDate = new Date (input);
+	public void printFoundedAfterDate(String input) {
+		//MyDate newDate = new MyDate (input);
+//		Date inputDate = new Date (input);
+//		List <Security> expired = securities.stream()
+//				.filter(x -> ((ChronoLocalDate) x.getDate()).isBefore(inputDate.getDate())).toList();
+//		
 		
 		
 	}

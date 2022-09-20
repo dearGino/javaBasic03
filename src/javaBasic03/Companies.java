@@ -29,7 +29,7 @@ public class Companies {
 	public void printFoundedAfterDate(String input) {
 		for (Company c : companies)
 		{
-		    c.printFoundedAfterDate(input);
+		  //  c.printFoundedAfterDate(input);
 		}
 	}
 }

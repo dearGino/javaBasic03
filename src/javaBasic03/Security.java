@@ -6,7 +6,7 @@ public class Security {
 	private String name;
 	private ArrayList<String> currency;
 	private String code;
-	private Date date;
+	private MyDate date;
 	
 	public void printing() {
 		
@@ -31,7 +31,7 @@ public class Security {
 		return code;
 	}
 
-	public Date getDate() {
+	public MyDate getDate() {
 		return date;
 	}
 	public String toPrintDate() {

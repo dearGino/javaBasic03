@@ -23,14 +23,14 @@ public class Main {
 		System.out.println("=========Все компании и даты их основания =========");
 		//iRead.printFoundationDate();
 		
-		System.out.println("=========Все ценные бумаги ==================");
-		//iRead.printAllSecurities();
+		System.out.println("=========Все просроченные ценные бумаги ==================");
+		iRead.printExpiredSecurities();
 		
 		System.out.println("=========Организации основанные после даты ==================");
-        Scanner input = new Scanner(System.in);
-        System.out.print("Input a number: ");
-        String inputDate = input.nextLine();
-		iRead.printFoundedAfterDate(inputDate);
+       // Scanner input = new Scanner(System.in);
+       //System.out.print("Введите дату: ");
+       // String inputDate = input.nextLine();
+		//iRead.printFoundedAfterDate(inputDate);
 	}
 
 }
