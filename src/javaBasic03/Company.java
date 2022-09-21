@@ -1,6 +1,4 @@
 package javaBasic03;
-
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.chrono.ChronoLocalDate;
 import java.util.ArrayList;
@@ -12,54 +10,79 @@ public class Company {
 	private String address;
 	private String phoneNumber;
 	private String inn;
-	private MyDate founded;
+	private Date founded;
 	private List<Security> securities = new ArrayList<Security>();
 	
-	public void printAll() {
 	
-		System.out.println(id);
-		System.out.println(name);
-		System.out.println(address);
-		System.out.println(phoneNumber);
-		System.out.println(inn);
-		founded.printing();
-		for (Security iii : securities)
+	public void printChosenCurrency(String input) {
+		List <Security> chosenCurrency = securities.stream()
+				.filter(x -> (x.getCurrency().contains(input))).toList();
+
+		for (Security s : chosenCurrency)
 		{
-		    iii.printing();
+			System.out.println ();
+			System.out.println ("Компания " + name + ",  id = " + id);
+		    System.out.println ("владеет бумагами в валюте " + input +":");
+		    System.out.println("  компании  " + s.getName());
+		    System.out.println("  " + s.getCurrency());
+		    System.out.println("  код:  " + s.getCode());
 		}
-		
-	}
-
-	public void printFoundationDate() {
-		System.out.print(name +"   -     дата основания ");
-		founded.printing();
 	}
 	
-	
-
-	public List<Security> getSecurities() {
-		return securities;
-	}
-	
-	public void printExpiredSecurities() {
+	public int printExpiredSecurities() {
 		LocalDate inputDate = LocalDate.now(); 
+		
 		List <Security> expired = securities.stream()
 				.filter(x -> ((ChronoLocalDate) x.getDate()).isBefore(inputDate)).toList();
+
+				
 		for (Security s : expired)
 		{
+			System.out.println ();
 			System.out.println (s.getName()+":");
 		    System.out.println("Код: "+s.getCode());
 		    System.out.println("Дата: "+s.toPrintDate());
 		}
+		return (expired.size());
 	}
 	
-	public void printFoundedAfterDate(String input) {
-		//MyDate newDate = new MyDate (input);
-//		Date inputDate = new Date (input);
-//		List <Security> expired = securities.stream()
-//				.filter(x -> ((ChronoLocalDate) x.getDate()).isBefore(inputDate.getDate())).toList();
-//		
-		
-		
+	
+	public void printFoundationDate() {
+		System.out.println(name +"   -     дата основания " + founded.printDate());
 	}
+	
+//	public void printAll() {
+//		
+//		System.out.println(id);
+//		System.out.println(name);
+//		System.out.println(address);
+//		System.out.println(phoneNumber);
+//		System.out.println(inn);
+//		founded.printing();
+//		for (Security iii : securities)
+//		{
+//		    iii.printing();
+//		}
+//	}
+	
+	public List<Security> getSecurities() {
+		return securities;
+	}
+	
+
+	
+
+	public String getName() {
+		return name;
+	}
+
+
+	public LocalDate getFounded() {
+		return founded.getDate();
+	}
+	public String toPrintFounded() {
+		return founded.printDate();
+	}
+
+
 }

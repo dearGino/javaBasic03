@@ -1,23 +1,24 @@
 package javaBasic03;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Security {
 	private String name;
 	private ArrayList<String> currency;
 	private String code;
-	private MyDate date;
+	private Date date;
 	
-	public void printing() {
-		
-		System.out.println(name);
-		for (String iii : currency)
-		{
-		    System.out.println(iii);
-		}
-		System.out.println(code);
-		date.printing();
-	}
+//	public void printAll() {
+//		
+//		System.out.println("  " + name);
+//		for (String iii : currency)
+//		{
+//		    System.out.println("  " + iii);
+//		}
+//		System.out.println("  " + code);
+//		date.printing();
+//	}
 
 	public String getName() {
 		return name;
@@ -31,9 +32,10 @@ public class Security {
 		return code;
 	}
 
-	public MyDate getDate() {
-		return date;
+	public LocalDate getDate() {
+		return date.getDate();
 	}
+	
 	public String toPrintDate() {
 		return date.printDate();
 	}

@@ -4,11 +4,13 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-public class MyDate {
+public class Date  {
 	
 	private LocalDate date;
 	
-	public MyDate (String inputDate) throws ParseException {
+	public Date (String input) throws ParseException {
+		String inputDate = input.replace("/", ".");
+		
 		try {
 			DateTimeFormatter df = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 			date = LocalDate.parse(inputDate, df);
@@ -21,16 +23,15 @@ public class MyDate {
 		
 	}
 	
-	
 	public LocalDate getDate() {
 		return date;
 	}
 
 
-	public void printing() {
-		DateTimeFormatter df = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-		System.out.println(df.format(date));
-	}
+//	public void printing() {
+//		DateTimeFormatter df = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+//		System.out.println(df.format(date));
+//	}
 	
 	public String printDate() {
 		DateTimeFormatter df = DateTimeFormatter.ofPattern("dd.MM.yyyy");
